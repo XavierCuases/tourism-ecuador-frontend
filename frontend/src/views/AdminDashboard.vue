@@ -1,14 +1,14 @@
 <template>
-  <div class="user-dashboard">
-    <h1>User Dashboard</h1>
-    <p>Welcome User! You have access to this panel.</p>
+  <div class="admin-dashboard">
+    <h1>Admin Dashboard</h1>
+    <p>Welcome Admin! You have access to this panel.</p>
     <button @click="handleLogout">Logout</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'UserDashboard',
+  name: 'AdminDashboard',
   methods: {
     handleLogout() {
       localStorage.removeItem('authToken');
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-.user-dashboard {
+.admin-dashboard {
   text-align: center;
   padding: 20px;
 }
