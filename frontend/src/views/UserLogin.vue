@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { loginUser } from "../services/api"; // Asegúrate de tener la función loginUser definida
+import { loginUser } from "../services/api"; 
 
 export default {
   name: "UserLogin",
@@ -59,26 +59,25 @@ export default {
         const response = await loginUser(credentials);
 
         if (response && response.token) {
-          // Almacena el token en localStorage
+         
           localStorage.setItem("authToken", response.token);
-          localStorage.setItem("userRole", response.role); // Guardar el rol del usuario
-
-          // Validar el rol y redirigir al dashboard adecuado
+          localStorage.setItem("userRole", response.role); 
+      
           if (response.role === "admin") {
-            // Redirige al dashboard de admin
+       
             this.$router.push("/admin-dashboard");
           } else if (response.role === "user") {
-            // Redirige al dashboard de usuario
+           
             this.$router.push("/user-dashboard");
           } else {
             this.errorMessage = "Invalid role, please contact support.";
           }
         } else {
-          this.errorMessage = "Invalid email or password.";
+          this.errorMessage = "There was an error logging in. Please try again.";
         }
       } catch (error) {
         console.error("Login error:", error);
-        this.errorMessage = "There was an error logging in. Please try again.";
+        this.errorMessage = "Invalid email or password.";
       }
     },
   },
@@ -86,7 +85,7 @@ export default {
 </script>
 
 <style scoped>
-/* Agrega estilos según tu preferencia */
+
 .login-container {
   display: flex;
   justify-content: center;

@@ -79,13 +79,13 @@ export default {
           this.successMessage = "Registration successful! You can now log in.";
           setTimeout(() => {
             this.$router.push("/login");
-          }, 2000); // Redirige después de 2 segundos
+          }, 4000); 
         } else {
-          this.errorMessage = "There was an error creating your account.";
+          this.errorMessage = "There was an error creating your account..";
         }
       } catch (error) {
         console.error("Registration error:", error);
-        this.errorMessage = "There was an error creating your account.";
+        this.errorMessage = "There was an error creating your user account, it already exists.";
       }
     },
   },
