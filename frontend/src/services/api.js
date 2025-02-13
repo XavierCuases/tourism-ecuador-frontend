@@ -1,21 +1,19 @@
 import axios from 'axios';
 
-// Configuramos la base URL para ambos microservicios
 const apiRegister = axios.create({
-  baseURL: 'http://localhost:3000/api',  // Microservicio de registro
+  baseURL: 'http://3.216.57.233:3000/api',  
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 const apiAuth = axios.create({
-  baseURL: 'http://localhost:3001/api',  // Microservicio de autenticación
+  baseURL: 'http://3.216.57.233:3001/api',  
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Función para registrar un usuario (conecta con el micro de registro)
 export const registerUser = async (userData) => {
   try {
     const response = await apiRegister.post('/users/register', userData);
@@ -26,11 +24,11 @@ export const registerUser = async (userData) => {
   }
 };
 
-// Función para hacer login de un usuario (conecta con el micro de autenticación)
+
 export const loginUser = async (credentials) => {
   try {
     const response = await apiAuth.post('/auth/login', credentials);
-    localStorage.setItem('authToken', response.data.token);  // Guardar el token JWT en el localStorage
+    localStorage.setItem('authToken', response.data.token);  
     return response.data;
   } catch (error) {
     console.error('Error al iniciar sesión', error);
