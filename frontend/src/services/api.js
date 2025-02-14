@@ -1,19 +1,32 @@
 import axios from 'axios';
 
 const apiRegister = axios.create({
-  baseURL: 'http://3.216.57.233:3000/api',  
+  
+  baseURL: 'http://3.216.57.233:3000/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
 const apiAuth = axios.create({
-  baseURL: 'http://3.216.57.233:3001/api',  
+  baseURL: 'http://3.216.57.233:3001/api',
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
+apiAuth.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+      config.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 export const registerUser = async (userData) => {
   try {
     const response = await apiRegister.post('/users/register', userData);
@@ -23,7 +36,6 @@ export const registerUser = async (userData) => {
     throw error;
   }
 };
-
 
 export const loginUser = async (credentials) => {
   try {

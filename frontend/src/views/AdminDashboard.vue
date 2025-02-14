@@ -1,16 +1,15 @@
 <template>
   <div class="admin-dashboard">
-    <header>
-      <div class="header-container">
-        <h1>Admin Dashboard</h1>
-        <button @click="handleLogout" class="logout-btn">Logout</button>
-      </div>
+    <header class="header-container">
+      <h1 class="dashboard-title">Admin Dashboard</h1>
+      <button @click="handleLogout" class="logout-btn">Logout</button>
     </header>
 
-    <nav class="nav-buttons">
+    <div class="nav-buttons">
       <button @click="listAllUsers" class="nav-btn">List Users</button>
       <button @click="showSearch" class="nav-btn">Search User</button>
-    </nav>
+      <button @click="goToManageActivities" class="nav-btn">Gestionar Actividades</button>
+    </div>
 
     <div v-if="showSearchSection">
       <h2>Search User by ID</h2>
@@ -105,13 +104,19 @@ export default {
   methods: {
     isAuthenticated() {
       return localStorage.getItem('authToken');
-    },
+   },
+
 
     handleLogout() {
       localStorage.removeItem('authToken');
       localStorage.removeItem('userRole');
       this.$router.push('/login');
     },
+
+    goToManageActivities() {
+  console.log('Redirigiendo a Gestionar Actividades');
+  this.$router.push('/manage-activities');
+},
 
     fetchUsers() {
       axios.get('http://34.196.226.115:7000/api/users')
@@ -170,32 +175,31 @@ export default {
     },
 
     updateUser() {
-  axios.put(`http://34.196.226.115:7001/api/users/${this.userToUpdate.id}`, this.userToUpdate)
-    .then((response) => {
-      console.log('API Response:', response);  
+      axios.put(`http://34.196.226.115:7001/api/users/${this.userToUpdate.id}`, this.userToUpdate)
+        .then((response) => {
+          console.log('API Response:', response);
 
-      if (response && response.data) {
-        const token = response.data.token;  
-        localStorage.setItem('authToken', token);  
+          if (response && response.data) {
+            const token = response.data.token;
+            localStorage.setItem('authToken', token);
 
-        this.users = this.users.map(user =>
-          user.id === this.userToUpdate.id ? { ...user, ...this.userToUpdate } : user
-        );
-        this.displayedUsers = this.users;
+            this.users = this.users.map(user =>
+              user.id === this.userToUpdate.id ? { ...user, ...this.userToUpdate } : user
+            );
+            this.displayedUsers = this.users;
 
-        alert('User updated successfully');
-        this.showModal = false;
-      } else {
-        console.error('Unexpected response format:', response);
-        alert('Unexpected error occurred');
-      }
-    })
-    .catch((error) => {
-      console.error('Error updating user:', error.response ? error.response.data.message : error.message);
-      alert(error.response ? error.response.data.message : 'Error updating user');
-    });
-},
-
+            alert('User updated successfully');
+            this.showModal = false;
+          } else {
+            console.error('Unexpected response format:', response);
+            alert('Unexpected error occurred');
+          }
+        })
+        .catch((error) => {
+          console.error('Error updating user:', error.response ? error.response.data.message : error.message);
+          alert(error.response ? error.response.data.message : 'Error updating user');
+        });
+    },
 
     deleteUser() {
       axios.delete(`http://34.196.226.115:7002/api/users/${this.userToDelete}`)
@@ -222,14 +226,81 @@ export default {
       this.showModal = false;
     },
   },
+
 };
 </script>
 
 <style scoped>
-body {
-  background-color: #d5f5e3;
+
+.admin-dashboard {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 20px;
+  color: #333;
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+}
+
+.dashboard-title {
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  flex: 1;
+}
+
+.logout-btn {
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background-color: #e53935;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.nav-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  margin: 0 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  background-color: #45a049;
+}
+
+/* User Table */
+.user-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -251,19 +322,14 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.update-form input {
-  padding: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+.update-btn, .delete-btn, .cancel-btn, .back-btn {
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .update-btn {
   background-color: #28a745;
   color: white;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
 .update-btn:hover {
@@ -273,8 +339,6 @@ body {
 .cancel-btn {
   background-color: #ccc;
   color: white;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
 .cancel-btn:hover {
@@ -284,8 +348,6 @@ body {
 .delete-btn {
   background-color: #dc3545;
   color: white;
-  padding: 10px 20px;
-  cursor: pointer;
 }
 
 .delete-btn:hover {
@@ -302,53 +364,5 @@ body {
 
 .back-btn:hover {
   background-color: #138496;
-}
-
-.admin-dashboard {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
-  color: #333;
-}
-
-.logout-btn {
-  padding: 10px 20px;
-  background-color: #f44336;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.logout-btn:hover {
-  background-color: #e53935;
-}
-
-.nav-btn {
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px;
-  margin: 0 10px;
-  border: none;
-  cursor: pointer;
-}
-
-.nav-btn:hover {
-  background-color: #45a049;
-}
-
-.user-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-}
-
-th, td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.loading-text {
-  font-size: 18px;
 }
 </style>

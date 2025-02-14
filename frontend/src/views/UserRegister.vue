@@ -98,8 +98,9 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f4f9;
+  background-color: #d6eaf8; 
 }
+
 
 .register-form {
   background-color: #ffffff;
@@ -111,8 +112,9 @@ export default {
 
 .register-title {
   text-align: center;
-  color: #2c3e50;
+  color: #2980b9; 
   font-size: 24px;
+  font-weight: 700; 
 }
 
 .register-description {
@@ -128,7 +130,7 @@ export default {
 
 label {
   font-weight: bold;
-  color: #2c3e50;
+  color: #2980b9; 
 }
 
 input {
@@ -142,7 +144,7 @@ input {
 button {
   width: 100%;
   padding: 12px;
-  background-color: #3498db;
+  background-color: #3498db; 
   border: none;
   border-radius: 4px;
   color: white;
@@ -151,7 +153,7 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: #2980b9; 
 }
 
 .login-link {
@@ -161,15 +163,24 @@ button:hover {
   color: #7f8c8d;
 }
 
+.login-link a {
+  text-decoration: none;
+  color: #3498db; 
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
 .error-message {
-  color: #e74c3c;
+  color: #e74c3c; 
   font-size: 14px;
   text-align: center;
   margin-top: 10px;
 }
 
 .success-message {
-  color: #27ae60;
+  color: #27ae60; 
   font-size: 14px;
   text-align: center;
   margin-top: 10px;

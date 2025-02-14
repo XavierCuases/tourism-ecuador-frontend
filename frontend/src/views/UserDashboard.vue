@@ -80,6 +80,7 @@ export default {
         }
       } else {
         errorMessage.value = 'Please log in to access activities.';
+        router.push('/login'); // Redirigir al login si no está autenticado
       }
     });
 

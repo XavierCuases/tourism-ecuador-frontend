@@ -85,44 +85,58 @@ export default {
 </script>
 
 <style scoped>
-
+/* Estilos para el contenedor del login */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f4f7f6;
+  background-color: #e0f7fa; /* Color de fondo verde suave */
 }
 
+/* Estilo del formulario */
 .login-form {
   background-color: white;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   width: 400px;
+  font-family: Arial, sans-serif;
 }
 
+/* Título */
 h2 {
   text-align: center;
   margin-bottom: 20px;
+  font-weight: 700; /* Más negrita */
+  font-size: 30px;
+  color: #4caf50; /* Verde para el título */
 }
 
+/* Estilo de los grupos de formularios */
 .form-group {
   margin-bottom: 20px;
 }
 
+/* Estilo de las etiquetas */
 label {
-  font-weight: bold;
+  font-weight: 600; /* Hacer el texto más negrita */
+  font-size: 14px;
+  color: #333;
 }
 
+/* Estilo de los inputs */
 input {
   width: 100%;
   padding: 12px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  font-size: 14px;
+  color: #333;
 }
 
+/* Estilo del botón */
 button {
   width: 100%;
   padding: 12px;
@@ -132,20 +146,40 @@ button {
   border-radius: 4px;
   cursor: pointer;
   margin-top: 20px;
+  font-weight: bold;
 }
 
 button:hover {
   background-color: #45a049;
 }
 
+/* Estilo del enlace de registro */
 .register-link {
   text-align: center;
   margin-top: 10px;
+  font-weight: 500;
 }
 
+.register-link a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Estilo del mensaje de error */
 .error-message {
   color: red;
   font-size: 14px;
   margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .login-form {
+    width: 90%;
+  }
 }
 </style>
