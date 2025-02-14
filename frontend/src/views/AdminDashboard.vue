@@ -233,9 +233,9 @@ export default {
 <style scoped>
 
 .admin-dashboard {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px;
+  font-family: 'Roboto', Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 30px;
   color: #333;
 }
 
@@ -243,61 +243,88 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #4CAF50;
+  background-color: #2c3e50; /* Cambié a un color más oscuro */
   color: white;
-  padding: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-title {
-  font-size: 30px;
+  font-size: 36px;
   font-weight: bold;
   text-align: center;
   flex: 1;
+  font-family: 'Arial', sans-serif;
 }
 
 .logout-btn {
-  padding: 10px 20px;
+  padding: 12px 25px;
   background-color: #f44336;
   color: white;
   border: none;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .logout-btn:hover {
   background-color: #e53935;
+  transform: scale(1.05);
 }
 
 /* Navigation Buttons */
 .nav-buttons {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 30px 0;
 }
 
 .nav-btn {
-  background-color: #4CAF50;
+  background-color: #3498db; /* Azul más suave */
   color: white;
-  padding: 10px;
-  margin: 0 10px;
+  padding: 12px 25px;
+  margin: 0 15px;
   border: none;
+  border-radius: 8px;
+  font-size: 16px;
   cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-btn:hover {
-  background-color: #45a049;
+  background-color: #2980b9;
+  transform: scale(1.05);
 }
 
 /* User Table */
 .user-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 30px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 th, td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 12px 15px;
   text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: #ffffff;
+}
+
+td:hover {
+  background-color: #f1f1f1;
 }
 
 /* Modal */
@@ -307,7 +334,7 @@ th, td {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -316,15 +343,18 @@ th, td {
 
 .modal-content {
   background-color: #fff;
-  padding: 20px;
-  border-radius: 5px;
-  width: 50%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 8px;
+  width: 60%;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .update-btn, .delete-btn, .cancel-btn, .back-btn {
-  padding: 10px 20px;
+  padding: 12px 30px;
   cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .update-btn {
@@ -334,6 +364,7 @@ th, td {
 
 .update-btn:hover {
   background-color: #218838;
+  transform: scale(1.05);
 }
 
 .cancel-btn {
@@ -343,6 +374,7 @@ th, td {
 
 .cancel-btn:hover {
   background-color: #999;
+  transform: scale(1.05);
 }
 
 .delete-btn {
@@ -352,17 +384,20 @@ th, td {
 
 .delete-btn:hover {
   background-color: #c82333;
+  transform: scale(1.05);
 }
 
 .back-btn {
   background-color: #17a2b8;
   color: white;
-  padding: 10px 20px;
+  padding: 12px 30px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .back-btn:hover {
   background-color: #138496;
+  transform: scale(1.05);
 }
+
 </style>

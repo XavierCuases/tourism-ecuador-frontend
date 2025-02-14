@@ -4,6 +4,7 @@ import UserRegister from '../views/UserRegister.vue';
 import AdminDashboard from '../views/AdminDashboard.vue';
 import UserDashboard from '../views/UserDashboard.vue';
 import ManageActivities from '../views/ManageActivities.vue';
+import RoutesView from '../views/RoutesView.vue';
 
 
 
@@ -13,6 +14,7 @@ const routes = [
   { path: '/admin-dashboard', name: 'AdminDashboard', component: AdminDashboard, meta: { requiresAuth: true, role: 'admin' } },
   { path: '/user-dashboard', name: 'UserDashboard', component: UserDashboard, meta: { requiresAuth: true, role: 'user' } },
   { path: '/manage-activities', name: 'ManageActivities', component: ManageActivities, meta: { requiresAuth: true, role: 'admin' } },
+  { path: '/routes', name: 'RoutesView', component: RoutesView, meta: { requiresAuth: true } },
 ];
 
 const router = createRouter({

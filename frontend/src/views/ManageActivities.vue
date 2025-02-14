@@ -291,126 +291,166 @@ const response = await axios.post('https://54.83.161.25/service3/graphql', {
   </script>
   
   <style scoped>
-    /* Styling */
-    .manage-activities {
-      padding: 20px;
-      font-family: Arial, sans-serif;
-    }
-  
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-  
-    .activity-table-container {
-      overflow-y: auto;
-      max-height: 400px;
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f9f9f9;
-      border-radius: 5px;
-    }
-  
-    .form-container {
-      margin-top: 20px;
-      padding: 20px;
-      background-color: #f9f9f9;
-      border-radius: 5px;
-    }
-  
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-    }
-  
-    .submit-btn, .cancel-btn {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  
-    .submit-btn:hover, .cancel-btn:hover {
-      background-color: #45a049;
-    }
-  
-    .activity-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-    }
-  
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-  
-    .error-message {
-      color: red;
-      margin-top: 10px;
-    }
-  
-    /* Modal */
-    .confirmation-modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-  
-    .modal-content {
-      background-color: white;
-      padding: 20px;
-      border-radius: 5px;
-      width: 40%;
-      text-align: center;
-    }
-  
-    .confirm-btn, .cancel-btn {
-      padding: 10px 20px;
-      cursor: pointer;
-    }
-  
-    .confirm-btn {
-      background-color: #28a745;
-      color: white;
-    }
-  
-    .confirm-btn:hover {
-      background-color: #218838;
-    }
-  
-    .cancel-btn {
-      background-color: #ccc;
-      color: white;
-    }
-  
-    .cancel-btn:hover {
-      background-color: #999;
-    }
-  
-    .back-btn {
-      background-color: #17a2b8;
-      color: white;
-      padding: 10px 20px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-  
-    .back-btn:hover {
-      background-color: #138496;
-    }
-  </style>
-  
+/* Styling */
+.manage-activities {
+  padding: 30px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f7f6;
+  border-radius: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.activity-table-container {
+  overflow-y: auto;
+  max-height: 400px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #3498db;
+}
+
+.submit-btn, .cancel-btn {
+  padding: 12px 25px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover, .cancel-btn:hover {
+  background-color: #45a049;
+}
+
+/* Activity Table */
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  font-size: 16px;
+}
+
+th {
+  background-color: #2980b9;
+  color: white;
+  font-weight: bold;
+}
+
+td {
+  background-color: #ffffff;
+}
+
+td:hover {
+  background-color: #f1f1f1;
+}
+
+/* Modal */
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 45%;
+  text-align: center;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-btn, .cancel-btn {
+  padding: 12px 25px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.confirm-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.confirm-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #999;
+  transform: scale(1.05);
+}
+
+.back-btn {
+  background-color: #17a2b8;
+  color: white;
+  padding: 12px 25px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.back-btn:hover {
+  background-color: #138496;
+  transform: scale(1.05);
+}
+
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-size: 16px;
+  margin-top: 15px;
+  text-align: center;
+}
+</style>
